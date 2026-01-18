@@ -95,6 +95,10 @@ Agent 365는 포괄적인 플랫폼을 제공하지만, 이번에는 **Copilot S
 
 <img width="2283" height="1339" alt="Image" src="https://github.com/user-attachments/assets/ab10f511-ab6a-4ea1-a067-836b9348504b" />
 
+두 가지 MCP 서버를 도구로 추가할 예정입니다
+- Microsoft 365 사용자 프로필 MCP 서버: A와의 미팅 잡아줘라고 프롬포트 보내도 A에 해당하는 이메일 잘 가져올 수 있도록.
+- Microsoft Outlook 캘린더 MCP 서버: 캘린더 일정 잡기 기능 활용 에정.
+
 ## 사전 준비 사항 (필수)
 
 이 실습에서는 **Microsoft 365 사용자 프로필 MCP 서버**와 **Microsoft Outlook 캘린더 MCP 서버**를 추가합니다. 원활한 진행을 위해 테넌트에서 다음 사항을 미리 설정해야 합니다.
@@ -111,9 +115,15 @@ MCP 서버는 기존 커넥터와 달리, 서버당 하나의 도구만 추가�
 
 1. **Copilot Studio**를 열고 이전에 생성한 '인터뷰 에이전트'를 엽니다.
 2. 상단 내비게이션에서 **도구(Tools)**를 선택합니다.
+![tool choice](https://microsoft.github.io/agent-academy/assets/tools.Bqmerpjo.png)
 3. **+ 도구 추가(+ Add tool)**를 클릭합니다.
+![Add a tool](https://microsoft.github.io/agent-academy/assets/add-a-tool.DZ4qDV1P.png)
+
+
 4. 필터에서 **모델 컨텍스트 프로토콜(Model Context Protocol)**을 선택하여 목록을 좁힙니다.
 5. 목록에서 **Microsoft 365 User Profile MCP Server**를 선택합니다.
+![Add a tool](https://microsoft.github.io/agent-academy/assets/select-user-profile-mcp.CAb36bRt.png)
+
 6. 연결 드롭다운에서 **새 연결 만들기(New connection)**를 선택합니다.
 7. **생성(Create)**을 눌러 연결 과정을 시작하고, 팝업에서 계정을 선택하여 연결합니다.
 8. 연결 후 **추가 및 구성(Add and config)**을 선택하여 에이전트에 서버를 추가합니다.
@@ -124,6 +134,7 @@ MCP 서버는 기존 커넥터와 달리, 서버당 하나의 도구만 추가�
 
 11. **허용(Allow)**을 선택하여 MCP 서버의 데이터 접근에 동의합니다. (이 동의 카드는 에이전트와 MCP 서버 조합당 최초 1회만 표시됩니다.)
 12. 에이전트가 답변을 제공하며, 왼쪽의 테스트 창에서 `getMyManager` 도구가 실행된 세부 정보(보낸 값/받은 값)를 확인할 수 있습니다.
+![Add a tool](https://microsoft.github.io/agent-academy/assets/user-profile-manager-test.CAFC5RSe.png)
 
 **추가 테스트:**
 이제 테넌트 내 사용자에 대해 다음과 같은 질문도 가능합니다:
@@ -160,26 +171,38 @@ MCP 서버는 기존 커넥터와 달리, 서버당 하나의 도구만 추가�
 1. 테스트 창 상단의 **새로 고침(Refresh/New Start)** 아이콘을 눌러 새 세션을 시작합니다.
 2. 다음 프롬프트를 입력하세요 (Jane Doe 대신 실제 생성한 사용자 이름 사용):
 > `Can you find 3 meeting times for a 30 minute meeting with Jane Doe for an interview prep-meeting?`
-
+![답변](https://microsoft.github.io/agent-academy/assets/outlook-calendar-meeting-test-output.Dzox1Lld.png)
 
 3. 에이전트가 `findMeetingTimes` 도구를 실행하여, 귀하와 상대방의 캘린더 가용성을 확인하고 3가지 시간 옵션을 제안할 것입니다.
+
+![Action map](https://microsoft.github.io/agent-academy/assets/outlook-calendar-test-debug.A6CE9Fy5.png)
+
 4. 제안된 시간 중 하나를 선택하여 미팅을 확정합니다 (시간은 실제 제안된 시간으로 변경):
 > `Please schedule the one on 10:30 AM UTC`
 
 
 5. `createEvent` 도구가 실행되며 회의 일정이 생성됩니다.
+![create event](https://microsoft.github.io/agent-academy/assets/outlook-calendar-meeting-create-event.BMldRfb9.png)
 6. 상대방(Jane Doe)의 메일함에서 미팅 요청이 도착했는지 확인해보세요.
+![outlook](https://microsoft.github.io/agent-academy/assets/outlook-calendar-meeting-schedule-meeting-request.QU06_x9g.png)
 
-이것으로 실습이 종료되었습니다. MCP 서버가 에이전트의 업무 수행 능력을 어떻게 향상시키는지 이해하셨기를 바랍니다!
+
 
 
 # 참고 자료
 
-* Microsoft Copilot Studio & MCP Labs
-* 모델 컨텍스트 프로토콜(MCP) 시작하기
-* Copilot Studio에서 MCP로 에이전트 확장하기
-* Microsoft Agent 365 개요
-* Microsoft Agent 365 툴링 서버 개요
-* Microsoft 365 사용자 프로필 MCP 서버 가이드
-* Microsoft Outlook 캘린더 MCP 서버 가이드
-* 사용자 추가 및 라이선스 할당 방법
+📖 [Microsoft Copilot Studio ❤️ MCP Lab](https://aka.ms/mcsmcp/lab)
+
+📖 [Model Context Protocol - Getting Started](https://modelcontextprotocol.io/docs/getting-started/intro)
+
+📖 [Extend agents with MCP in Copilot Studio](https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp?WT.mc_id=power-215684-dlaskewitz)
+
+📖 [Microsoft Agent 365 Overview](https://learn.microsoft.com/microsoft-agent-365/overview?WT.mc_id=power-215684-dlaskewitz)
+
+📖 [Microsoft Agent 365 Tooling Servers Overview](https://learn.microsoft.com/microsoft-agent-365/tooling-servers-overview?WT.mc_id=power-215684-dlaskewitz)
+
+📖 [Microsoft 365 User Profile MCP Server](https://learn.microsoft.com/microsoft-agent-365/mcp-server-reference/me?WT.mc_id=power-215684-dlaskewitz)
+
+📖 [Microsoft Outlook Calendar MCP Server](https://learn.microsoft.com/microsoft-agent-365/mcp-server-reference/calendar?WT.mc_id=power-215684-dlaskewitz)
+
+📖 [Add users and assign licenses](https://learn.microsoft.com/microsoft-365/admin/add-users/add-users?view=o365-worldwide&WT.mc_id=power-215684-dlaskewitz)

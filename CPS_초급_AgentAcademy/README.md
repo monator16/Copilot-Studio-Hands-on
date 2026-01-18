@@ -9,8 +9,8 @@
 |---------|-------|---------------|--------|
 | A1 | Copilot Studio Introduction | Brief Introduction |01, 02|
 | A2 | Understanding Agent Models | Customize agent models for maximum impact and engagement |05|
-| A3 | Integrate with MCP Servers | Make agent multi-agent ready with connected agents |10|
-| A4 | Transform Single Agent | Transform single agent into coordinated multi-agent system | 03 |
+| A3 | Multi Agent | Transform single agent into coordinated multi-agent system | 03 |
+| A4 | Integrate with MCP Servers | Add a MCP tool |10|
 | A5 | Prompts - Dataverse Grounding | Ground agents in enterprise data for accurate responses |07, 08 |
 
 
